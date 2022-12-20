@@ -1,0 +1,42 @@
+--WHERE and SUBQUERRY
+
+SELECT color
+FROM Swords
+WHERE id in (
+  SELECT Sword_id
+  FROM Jedi
+  WHERE Species = 'Human')
+
+--JOIN
+
+SELECT *
+FROM Jedi AS j LEFT JOIN Sith AS s USING (Sword_id)
+
+SELECT *
+FROM Jedi AS j LEFT JOIN Sith AS s USING (Species)
+
+SELECT *
+FROM Jedi AS j INNER JOIN Sith AS s
+
+SELECT *
+FROM Jedi AS j INNER JOIN Sith AS s USING(Sword_id)
+
+SELECT *
+FROM Jedi AS j INNER JOIN Swords AS sw
+
+--Agregation Func
+
+SELECT Count(Rank)
+FROM Jedi
+
+SELECT SUM(Sword_id)
+FROM Sith
+
+SELECT AVG(Sword_id)
+FROM Sith
+
+SELECT MIN(Sword_id)
+FROM Jedi
+
+SELECT MAX(Sword_id)
+FROM Sith

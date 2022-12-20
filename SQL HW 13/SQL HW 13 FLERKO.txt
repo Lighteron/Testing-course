@@ -1,0 +1,61 @@
+--Создать минимум две таблицы
+--Применить primary/foreign key
+--Применить к id или другому полю инкремент
+--Заполнить таблицу данными
+
+DROP TABLE Customers;
+DROP TABLE Orders;
+DROP TABLE Shippings;
+
+CREATE TABLE "Swords"
+(
+  id integer PRIMARY KEY AUTOINCREMENT not NULL,
+  color varchar(10),
+  crystal varchar(15)
+);
+
+INSERT INTO Swords
+(color, crystal)
+Values 
+("RED", "Unstable"),
+("BLUE", "Stable"),
+("GREEN", "Stable"),
+("PURPLE", "Stable");
+
+CREATE Table "Jedi"
+(
+  Jedi_id integer PRIMARY KEY AUTOINCREMENT not NULL,
+  Jedi_name varchar(50) NOT NULL,
+  Species varchar(20) not NULL,
+  Rank varchar(20) not NULL,
+  Sword_id int NOT NULL,
+  FOREIGN KEY (Sword_id) REFERENCES Swords(id) 
+);
+
+INSERT INTO Jedi
+(Jedi_id, Jedi_name, Species, Rank, Sword_id)
+Values 
+(NULL, "Qui Gon Jinn", "Human", "Jedi Master", 3),
+(NULL, "Obi-Wan Kenobi", "Human", "Jedi Master", 2),
+(NULL, "Anakin Skywalker", "Human", "Jedi Knight", 2),
+(NULL, "Mace Windu", "Human", "Jedi Master", 4),
+(NULL, "Yoda", "Unknown", "Grand Master", 3);
+
+CREATE Table "Sith"
+(
+  Sith_id integer PRIMARY KEY AUTOINCREMENT not NULL,
+  Sith_name varchar(50) NOT NULL,
+  Species varchar(20) not NULL,
+  Rank varchar(20) not NULL,
+  Sword_id int NOT NULL,
+  FOREIGN KEY (Sword_id) REFERENCES Swords(id)
+);
+
+INSERT INTO Sith
+(Sith_id, Sith_name, Species, Rank, Sword_id)
+Values 
+(NULL, "Darth Bane", "Human", "Sith Lord", 1),
+(NULL, "Dart Vader", "Human", "Sith Lord", 1),
+(NULL, "Darth Plagueis", "Muun", "Sith Master", 1),
+(NULL, "Darth Revan", "Human", "Sith Lord", 4),
+(NULL, "Darth Sidius", "Human", "Sith Imperator", 1);
